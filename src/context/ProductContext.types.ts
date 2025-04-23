@@ -1,4 +1,9 @@
-import { ProductType, SetCart, SetProducts } from "../types/ProductType";
+import {
+  CartItem,
+  ProductType,
+  SetCart,
+  SetProducts,
+} from "../types/ProductType";
 
 //? Defines the child components that the provider will wrap (React.ReactNode includes anything renderable in React)
 export type ProductProviderProps = {
@@ -6,8 +11,9 @@ export type ProductProviderProps = {
 };
 
 export type ProductContext = {
-  addToCart: (id: number) => void;
+  addToCart: (id: number, setCart: SetCart) => void;
   products: ProductType[];
   setProducts: SetProducts;
   setCart: SetCart;
+  cart: CartItem[];
 };

@@ -2,6 +2,7 @@
 import AddToCartButton from "./AddToCartButton";
 //* types
 import { ProductType } from "../types/ProductType";
+import { useProducts } from "../context/ProductContext";
 
 export default function Product({
   id,
@@ -9,8 +10,8 @@ export default function Product({
   description,
   price,
   image,
-  quantity,
 }: ProductType) {
+  const { cart } = useProducts();
   return (
     <div className="flex border-2 border-lime-600 my-5 mx-10 p-10 rounded-md shadow-md">
       <li className="flex w-full">
@@ -23,7 +24,9 @@ export default function Product({
           <h2 className="font-bold mb-3">{title}</h2>
           <p>{description}</p>
           <p className="font-bold mt-5">{price}$</p>
-          <p className="font-bold mt-5">Quantity: {quantity}</p>
+          <p className="font-bold mt-5">
+            Quantity: {cart.find((item) => item.id === id)?.quantity || 0}
+          </p>
         </div>
       </li>
       <AddToCartButton productId={id} />
