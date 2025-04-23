@@ -1,9 +1,9 @@
 import { useContext, createContext, useState, useEffect } from "react";
 //* Funtions
 import { fetchProducts } from "../functions/fetchProducts";
-import addProduct from "../functions/addProduct";
+import addToCart from "../functions/addToCart";
 //* Types
-import { ProductType } from "../types/ProductType";
+import { ProductType, CartItem } from "../types/ProductType";
 import type {
   ProductProviderProps,
   ProductContext,
@@ -23,6 +23,7 @@ export function useProducts() {
 
 export function ProductProvider({ children }: ProductProviderProps) {
   const [products, setProducts] = useState<ProductType[]>([]);
+  const [cart, setCart] = useState<CartItem[]>([]);
 
   useEffect(() => {
     const getProducts = async () => {
@@ -37,7 +38,9 @@ export function ProductProvider({ children }: ProductProviderProps) {
   }, []);
 
   return (
-    <ProductContext.Provider value={{ products, setProducts, addProduct }}>
+    <ProductContext.Provider
+      value={{ products, setProducts, addToCart, setCart }}
+    >
       {children}
     </ProductContext.Provider>
   );
