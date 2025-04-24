@@ -3,14 +3,14 @@ import { useContext, createContext, useState, useEffect } from "react";
 import { fetchProducts } from "../functions/fetchProducts";
 import addToCart from "../functions/addToCart";
 //* Types
-import { ProductType, CartItem } from "../types/ProductType";
-import type {
+import { ProductType, CartItemType } from "../types/ProductType";
+import {
   ProductProviderProps,
-  ProductContext,
+  ProductContextType,
 } from "./ProductContext.types";
 
 //? Create the context with an initial empty value
-const ProductContext = createContext({} as ProductContext);
+const ProductContext = createContext({} as ProductContextType);
 
 //? Custom hook
 export function useProducts() {
@@ -23,13 +23,13 @@ export function useProducts() {
 
 export function ProductProvider({ children }: ProductProviderProps) {
   const [products, setProducts] = useState<ProductType[]>([]);
-  const [cart, setCart] = useState<CartItem[]>([]);
+  const [cart, setCart] = useState<CartItemType[]>([]);
 
   useEffect(() => {
     const getProducts = async () => {
       try {
-        const productsWithQuantity = await fetchProducts();
-        setProducts(productsWithQuantity);
+        const data = await fetchProducts();
+        setProducts(data);
       } catch (error) {
         console.log("Error while downloading data:", error);
       }

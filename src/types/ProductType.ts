@@ -5,13 +5,12 @@ export type ProductType = {
   image: string;
   price: number;
   title: string;
-  quantity: number;
 };
 
-export type CartItem = {
+export type CartItemType = {
   id: number;
   quantity: number;
 };
 
 export type SetProducts = React.Dispatch<React.SetStateAction<ProductType[]>>;
-export type SetCart = React.Dispatch<React.SetStateAction<CartItem[]>>;
+export type SetCart = React.Dispatch<React.SetStateAction<CartItemType[]>>;

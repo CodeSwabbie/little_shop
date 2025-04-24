@@ -1,5 +1,5 @@
 import {
-  CartItem,
+  CartItemType,
   ProductType,
   SetCart,
   SetProducts,
@@ -10,10 +10,10 @@ export type ProductProviderProps = {
   children: React.ReactNode;
 };
 
-export type ProductContext = {
+export type ProductContextType = {
   addToCart: (id: number, setCart: SetCart) => void;
   products: ProductType[];
   setProducts: SetProducts;
   setCart: SetCart;
-  cart: CartItem[];
+  cart: CartItemType[];
 };
