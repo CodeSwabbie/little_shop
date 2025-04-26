@@ -1,6 +1,6 @@
-import { SetCart } from "../types/ProductType";
+import { SetCartType } from "../types/ProductType";
 
-export default function addToCart(id: number, setCart: SetCart) {
+export default function addToCart(id: number, setCart: SetCartType) {
   setCart((prevCart) => {
     const existingItem = prevCart.find((item) => item.id === id);
     if (existingItem) {

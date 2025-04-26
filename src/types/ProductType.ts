@@ -12,5 +12,7 @@ export type CartItemType = {
   quantity: number;
 };
 
-export type SetProducts = React.Dispatch<React.SetStateAction<ProductType[]>>;
-export type SetCart = React.Dispatch<React.SetStateAction<CartItemType[]>>;
+export type SetProductsType = React.Dispatch<
+  React.SetStateAction<ProductType[]>
+>;
+export type SetCartType = React.Dispatch<React.SetStateAction<CartItemType[]>>;
